@@ -1,6 +1,6 @@
 # react-puppet
 
-> another react state management solution
+Yet, another react function component shared state management solution.
 
 [![NPM](https://img.shields.io/npm/v/react-puppet.svg)](https://www.npmjs.com/package/react-puppet) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -16,6 +16,7 @@ npm install --save react-puppet
 import React from 'react'
 import { useState, State } from 'react-puppet'
 
+// create state(data model)
 const todos = new State([]);
 const done = new State([]);
 const editingTodo = new State("");
