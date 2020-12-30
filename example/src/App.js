@@ -1,7 +1,6 @@
 import React from 'react'
-
 import { useState, State } from 'react-puppet'
-import 'react-puppet/dist/index.css'
+
 const todos = new State([]);
 const done = new State([]);
 const editingTodo = new State("");
