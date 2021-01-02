@@ -28,6 +28,10 @@ class State {
       await after(val)
     }
   }
+  read = () => {
+    const val = this.#val
+    return val
+  }
   static useState = (mcbinder) => {
     const [val, setter] = React.useState(mcbinder.#val);
     const cbRef = React.useRef(null)
