@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, State } from 'react-puppet'
+import { useState, State } from 'react-sss'
 
 const todos = new State([]);
 const done = new State([]);

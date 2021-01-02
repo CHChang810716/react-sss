@@ -1,20 +1,20 @@
-# react-puppet
+# react-sss (react simple shared state)
 
 Yet, another react function component shared state management solution.
 
-[![NPM](https://img.shields.io/npm/v/react-puppet.svg)](https://www.npmjs.com/package/react-puppet) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-sss.svg)](https://www.npmjs.com/package/react-sss) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-puppet
+npm install --save react-sss
 ```
 
 ## Usage
 
 ```jsx
 import React from 'react'
-import { useState, State } from 'react-puppet'
+import { useState, State } from 'react-sss'
 
 // create state(data model)
 const todos = new State([]);

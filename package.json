@@ -1,10 +1,10 @@
 {
-  "name": "react-puppet",
+  "name": "react-sss",
   "version": "1.0.0",
   "description": "another react state management solution",
   "author": "CHChang810716",
   "license": "MIT",
-  "repository": "CHChang810716/react-puppet",
+  "repository": "CHChang810716/react-sss",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
