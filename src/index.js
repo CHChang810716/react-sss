@@ -24,6 +24,9 @@ class State {
     for(let setter of this.#setters) {
       setter(val)
     }
+    for(let after of this.#afters) {
+      after(val)
+    }
   }
   read = () => {
     const val = this.#val
@@ -31,22 +34,19 @@ class State {
   }
   static useState = (mcbinder) => {
     const [val, setter] = React.useState(mcbinder.#val);
-    const init = React.useRef(true);
+    // const init = React.useRef(true);
     React.useEffect(()=> {
       mcbinder.#link(setter)
       return () => {
         mcbinder.#unlink(setter)
       }
     }, [])
-    React.useEffect(()=> {
-      if(init.current) {
-        init.current = false;
-        return
-      }
-      for(let after of mcbinder.#afters) {
-        after(val)
-      }
-    }, [val])
+    // React.useEffect(()=> {
+    //   if(init.current) {
+    //     init.current = false;
+    //     return
+    //   }
+    // }, [val])
     return val;
   }
 }
