@@ -31,6 +31,7 @@ class State {
   }
   static useState = (mcbinder) => {
     const [val, setter] = React.useState(mcbinder.#val);
+    const init = React.useRef(true);
     React.useEffect(()=> {
       mcbinder.#link(setter)
       return () => {
@@ -38,6 +39,10 @@ class State {
       }
     }, [])
     React.useEffect(()=> {
+      if(init.current) {
+        init.current = false;
+        return
+      }
       for(let after of mcbinder.#afters) {
         after(val)
       }
