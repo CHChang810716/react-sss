@@ -19,13 +19,10 @@ class State {
   #unlink = (setter) => {
     this.#setters.delete(setter)
   }
-  set = async (val) => {
-    for(let setter of this.#setters) {
-      await setter(val)
-    }
+  set = (val) => {
     this.#val = val
-    for(let after of this.#afters) {
-      await after(val)
+    for(let setter of this.#setters) {
+      setter(val)
     }
   }
   read = () => {
@@ -34,23 +31,15 @@ class State {
   }
   static useState = (mcbinder) => {
     const [val, setter] = React.useState(mcbinder.#val);
-    const cbRef = React.useRef(null)
-    const setThen = (val) => {
-      return new Promise((resolve, reject) =>{
-        cbRef.current = resolve;
-        setter(val)
-      })
-    }
     React.useEffect(()=> {
-      mcbinder.#link(setThen)
+      mcbinder.#link(setter)
       return () => {
-        mcbinder.#unlink(setThen)
+        mcbinder.#unlink(setter)
       }
     }, [])
     React.useEffect(()=> {
-      if(cbRef.current) {
-        cbRef.current(val);
-        cbRef.current = null;
+      for(let after of mcbinder.#afters) {
+        after(val)
       }
     }, [val])
     return val;

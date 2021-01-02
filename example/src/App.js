@@ -27,9 +27,8 @@ const Item = ({tid, text}) => {
       const target = todoList[tid];
       let arr = [...todoList]
       arr.splice(tid, 1)
-      todos.set(arr).then(()=>{
-        return done.set([target, ...doneList])
-      })
+      todos.set(arr)
+      done.set([target, ...doneList])
     }}>done</button>
     <button onClick={e => {
       let arr = [...todoList]
